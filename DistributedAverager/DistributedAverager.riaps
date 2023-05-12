@@ -1,0 +1,42 @@
+
+app DistributedAverager {
+    message RandomData; 
+    message SensorData;
+    // Additional messages here
+    message NodeData;
+    
+    // Single
+    component RandomGen {
+      timer clock 10000; 							
+      pub randomGenPub : RandomData;
+    }
+    
+    // This is deployed with each Averager component
+    component Sensor {
+    	sub randomGenSub : RandomData;
+    	pub sensorDataPub :SensorData; 
+    }
+    
+    component Averager(name,Ts) {
+      sub sensorData : SensorData;	
+      timer update 10;
+      sub nodeDataSub : NodeData;
+      pub nodeDataPub : NodeData;
+      timer display 1000;
+    }
+
+	actor RandomGenActor {
+		{
+			gen : RandomGen;
+		}
+	}
+	
+    actor AveragerActor(name) {
+       internal SensorData; // Each actor has a local, but fuzzy value
+       {
+          sensor : Sensor;		
+          averager : Averager(name=name,Ts=10.0); 		
+       }
+
+    }
+}
