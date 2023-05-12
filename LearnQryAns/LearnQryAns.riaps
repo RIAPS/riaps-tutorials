@@ -1,0 +1,25 @@
+app LearnQryAns {
+	message QueryTopic;
+	message AnswerTopic;
+	
+	component QueryGenerator {
+		timer ticker 1000;
+		qry queryPort : (QueryTopic,AnswerTopic);
+	}
+	
+	component Doubler {
+		ans answerPort : (QueryTopic,AnswerTopic);
+	}
+	
+	actor AskerActor {
+		{
+			myquerygenerator : QueryGenerator;
+		}
+	}
+	
+	actor DoublerActor {
+		{
+			mydoubler : Doubler;
+		}
+	}
+}

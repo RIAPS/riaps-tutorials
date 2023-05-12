@@ -1,0 +1,10 @@
+app LearnTimer {
+	component Ticker {
+		timer clock 1000 msec;
+	}
+	actor TickerActor {
+		{
+			myTicker : Ticker;
+		}
+	}
+}

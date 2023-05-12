@@ -14,7 +14,7 @@ app DistributedAverager {
     // This is deployed with each Averager component
     component Sensor {
     	sub randomGenSub : RandomData;
-    	pub sensorDataPub :SensorData; 
+    	pub sensorDataPub : SensorData;
     }
     
     component Averager(name,Ts) {

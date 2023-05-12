@@ -1,0 +1,24 @@
+app LearnPubSub {
+	message MsgTopic;
+	
+	component Ticker {
+		timer ticker 1000;
+		pub pubPort : MsgTopic;
+	}
+	
+	component Listener {
+		sub newMsg : MsgTopic;
+	}
+	
+	actor TickerActor {
+		{
+			myticker : Ticker;
+		}
+	}
+	
+	actor ListenerActor {
+		{
+			mylistener : Listener;
+		}
+	}
+}

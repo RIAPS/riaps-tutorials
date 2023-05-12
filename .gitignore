@@ -164,3 +164,7 @@ cython_debug/
 riaps.key
 riaps.yaml
 riaps-app.cert
+*.dot
+.project
+.pydevproject
+*.json
