@@ -1,8 +1,8 @@
 app DistributedAverager {
 	host all {
-		network any;
+		network 10.0.0.222;
 	}
-	on (10.0.0.222) RandomGenActor;
-	on (10.0.0.227) AveragerActor(name='A');
-	on (10.0.0.226) AveragerActor(name='B');
+	on (10.0.0.220) AveragerActor(name='A'), RandomGenActor;
+	on (10.0.0.227) AveragerActor(name='B');
+	on (10.0.0.226) AveragerActor(name='C');
 }

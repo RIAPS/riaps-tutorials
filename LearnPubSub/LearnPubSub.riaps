@@ -11,12 +11,15 @@ app LearnPubSub {
 	}
 	
 	actor TickerActor {
+		//internal MsgTopic;
+		//local MsgTopic;
 		{
 			myticker : Ticker;
 		}
 	}
 	
 	actor ListenerActor {
+		//local MsgTopic;
 		{
 			mylistener : Listener;
 		}

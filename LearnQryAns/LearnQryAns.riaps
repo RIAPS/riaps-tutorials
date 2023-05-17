@@ -3,7 +3,7 @@ app LearnQryAns {
 	message AnswerTopic;
 	
 	component QueryGenerator {
-		timer ticker 1000;
+		timer clock 1000;
 		qry queryPort : (QueryTopic,AnswerTopic);
 	}
 	

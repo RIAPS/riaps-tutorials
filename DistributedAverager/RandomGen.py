@@ -11,7 +11,7 @@ class RandomGen(Component):
     def on_clock(self):
         msg = self.clock.recv_pyobj()
         theValue = random.random()*20
-        self.logger.info(f"New target average: {theValue}")
+        self.logger.info(f"New target value: {theValue}")
         self.randomGenPub.send_pyobj(theValue)
         
         

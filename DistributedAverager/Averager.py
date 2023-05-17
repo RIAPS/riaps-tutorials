@@ -4,17 +4,16 @@ import spdlog
 
 class Averager(Component):
 
-    def __init__(self, name, Ts):
+    def __init__(self, name):
         super(Averager, self).__init__()
         self.name = name
         self.sensorUpdate = False
         self.dataValues = {}
-        self.Ts = Ts
+        self.gain = 5
         self.ownValue = 0
         
     def on_sensorData(self):
         self.sensorValue = self.sensorData.recv_pyobj()
-        self.dataValues = {}
         self.sensorUpdate = True
         
     def on_nodeDataSub(self):
@@ -26,13 +25,14 @@ class Averager(Component):
     def on_update(self):
         msg = self.update.recv_pyobj()
         if self.sensorUpdate:
+            self.dataValues = {}
             self.ownValue = self.sensorValue
             self.sensorUpdate = False
         if len(self.dataValues) != 0:
             sum = 0.0
             for value in self.dataValues.values():
                 sum += (self.ownValue - value)
-            der = sum / self.Ts
+            der = sum / self.gain
             self.ownValue -= der
         msg = (self.name,self.ownValue)
         self.nodeDataPub.send_pyobj(msg)

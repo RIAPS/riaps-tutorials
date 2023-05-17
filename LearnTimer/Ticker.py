@@ -1,5 +1,6 @@
 from riaps.run.comp import Component
-import spdlog
+import spdlog 
+import typing
 
 
 class Ticker(Component):
@@ -9,5 +10,5 @@ class Ticker(Component):
 
     def on_clock(self):
         msg = self.clock.recv_pyobj()
-        self.logger.info(f"Hello world! at {msg}")
+        self.logger.info(f"Hello world at: {msg}")
         

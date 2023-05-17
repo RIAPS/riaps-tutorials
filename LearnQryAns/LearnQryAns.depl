@@ -1,0 +1,7 @@
+app LearnQryAns {
+	host all {
+		network 10.0.0.222;
+	}
+	on (10.0.0.226) AskerActor;
+	on (10.0.0.220) DoublerActor;
+}
