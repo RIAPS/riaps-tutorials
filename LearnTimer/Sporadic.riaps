@@ -1,0 +1,10 @@
+app Sporadic {
+	component Bar {
+		timer clock;
+	}
+	actor SporadicActor {
+		{
+			CompA : Bar;
+		}
+	}
+}

@@ -1,0 +1,10 @@
+app Periodic {
+	component Foo {
+		timer clock 1000 msec;
+	}
+	actor PeriodicActor {
+		{
+			CompA : Foo;
+		}
+	}
+}
