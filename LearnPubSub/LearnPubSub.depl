@@ -1,8 +1,0 @@
-app LearnPubSub {
-	host all {
-		network 10.0.0.222;
-	}
-	
-	on (10.0.0.226) TickerActor, ListenerActor;
-	on (10.0.0.220) ListenerActor;
-}

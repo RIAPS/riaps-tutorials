@@ -1,0 +1,24 @@
+app PubSub {
+	message MsgTopic;
+		
+	component Talker {
+		timer ticker 1000 msec;
+		pub pubPort : MsgTopic;
+	}
+
+	component Listener {
+		sub subPort : MsgTopic;
+	}
+		
+	actor TalkerActor {
+		{
+			mytalker : Talker;
+		}
+	}
+	
+	actor ListenerActor {
+		{
+			mylistener : Listener;
+		}
+	}
+}	
