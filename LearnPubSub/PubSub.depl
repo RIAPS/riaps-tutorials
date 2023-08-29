@@ -1,3 +1,0 @@
-app PubSub {
-	on all TalkerActor, ListenerActor;
-}
